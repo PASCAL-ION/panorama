@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    color: black;
+}
+
+.row_container{
+    margin: 50px auto 0 auto;
+    padding: 20px 50px;
+    width: 500px;
+    background: #0000003e;
+}
+
+.row{
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    font-weight: bold;
+    box-shadow: 5px 5px 10px black;
+}
+
+.header__nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 25px;
+    background: #264a91;
+}
+
+.header__logo{
+    color: rgb(148, 0, 0);
+    font-weight: bold;
+}
+
+.header__links a:hover{
+    color: white;
+    text-decoration: underline;
+}
