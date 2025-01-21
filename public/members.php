@@ -12,7 +12,7 @@
         require_once "../views/templates/header.php";
         require_once "../controllers/cntrl_members.php";
       
-        getUsers();
+        showUsers();
     ?>
 </body>
 </html>

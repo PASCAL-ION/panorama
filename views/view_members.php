@@ -8,24 +8,30 @@
 </head>
 <body>
     <form action="" method="get">
-        <label for="membersFilter">Show just members</label>
-        <input type="checkbox" name="membersFilter" id="membersFilter">
+        <label for="lastname">Lastname :</label>
+        <input type="text" name="lastname" id="lastname">
+
+        <label for="firstname">Firstname :</label>
+        <input type="text" name="firstname" id="firstname">
+
+
         <button type="submit">Valider</button>
     </form>
     <ul>
-        <?php foreach ($members as $member):?>
-            <?php if($membersFilter && $membersFilter == "on"): ?>
-                <?php if(gettype($member["id_subscription"]) != NULL):?>
-                    <div><?= $member["firstname"] . "-" . $member["lastname"]?><span>(----MEMBER)</span></div>
-                <?php endif ?>
-            <?php else: ?>
-                <?php if(gettype($member["id_subscription"]) == "NULL"):?>
-                    <div><?= $member["firstname"] . "-" . $member["lastname"] ?></div>
-                <?php elseif(gettype($member["id_subscription"]) !== "NULL"): ?>
-                    <div><?= $member["firstname"] . "-" . $member["lastname"]?><span>(----MEMBER)</span></div>
-                <?php endif ?>
-            <?php endif ?>
+        <?php foreach($members as $member): ?>
+            <?php echo $member["subscriptionPlan"];?>
+            <li>
+                <a href="/member_details.php?id=<?php echo $member["userid"];?>&subscription=<?php echo $member["subscriptionPlan"];?>&firstname=<?php echo $member["firstname"];?>&lastname=<?php echo $member["lastname"];?>">
+                <div>
+                    <?= $member["lastname"]."-".$member["firstname"] ?>
+                    <span class="subscription"><?= $member["subscriptionPlan"] ? $member["subscriptionPlan"] : ""?></span>
+                </div>
+            </li>
         <?php endforeach ?>
     </ul>
 </body>
 </html>
+
+
+
+
