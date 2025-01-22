@@ -11,6 +11,7 @@
     <?php
         require_once "../controllers/cntrl_member_details.php";
         userHistory();
+        changeSubscription();
     ?>
 </body>
 </html>

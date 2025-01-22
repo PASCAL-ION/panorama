@@ -15,4 +15,43 @@ function getUserHistory($id){
         return [];
     }
 }
+
+function modifySubscription($userid, $selected_sub_id){
+    $con = BDConnection();
+    if ($con) {
+        if ($selected_sub_id && $userid) {
+            $request = 'UPDATE membership SET id_subscription=?, date_begin=NOW() WHERE id_user=?;';
+            $stmt = $con->prepare($request);
+            $stmt->execute([$selected_sub_id, $userid]);
+            echo "modifySubscription : ".$selected_sub_id."<br/>";
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+    } else {
+        return [];
+    }
+}
+
+// function deleteSubscription($id, $sub_selected){
+//     $con = BDConnection();
+//     if ($con) {
+//         $request = 'ALTER ';
+//         $stmt = $con->prepare($request);
+//         $stmt->execute([$id]);
+//         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+//     } else {
+//         return [];
+//     }
+// }
+
+// function addSubscription($id, $sub_selected){
+//     $con = BDConnection();
+//     if ($con) {
+//         $request = 'ALTER ';
+//         $stmt = $con->prepare($request);
+//         $stmt->execute([$id]);
+//         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+//     } else {
+//         return [];
+//     }
+// }
 ?>

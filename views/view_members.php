@@ -19,12 +19,11 @@
     </form>
     <ul>
         <?php foreach($members as $member): ?>
-            <?php echo $member["subscriptionPlan"];?>
             <li>
-                <a href="/member_details.php?id=<?php echo $member["userid"];?>&subscription=<?php echo $member["subscriptionPlan"];?>&firstname=<?php echo $member["firstname"];?>&lastname=<?php echo $member["lastname"];?>">
-                <div>
+                <a href="/member_details.php?id=<?php echo $member["userid"];?>&subscription=<?php echo $member["subscriptionName"];?>&subscriptionId=<?php echo $member["subscriptionId"];?>&firstname=<?php echo $member["firstname"];?>&lastname=<?php echo $member["lastname"];?>">
+                <div style="display: flex; gap: 20px;">
                     <?= $member["lastname"]."-".$member["firstname"] ?>
-                    <span class="subscription"><?= $member["subscriptionPlan"] ? $member["subscriptionPlan"] : ""?></span>
+                    <span class="subscription"><?= $member["subscriptionName"] ? $member["subscriptionName"] : ""?></span>
                 </div>
             </li>
         <?php endforeach ?>

@@ -40,3 +40,6 @@
 
 params mem details
     
+
+UPDATE membership SET membership.id_subscription FROM membership INNER JOIN subscription ON subscription.id=membe
+rship.id_subscription;

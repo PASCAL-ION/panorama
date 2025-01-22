@@ -6,6 +6,7 @@ function showUsers(){
     $firstname = $_GET["firstname"];
 
     $members = getUsers($lastname, $firstname);
+    // print_r($members);
     require_once "../views/view_members.php";
 }
 ?>
