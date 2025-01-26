@@ -7,30 +7,30 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="get">
-        <label for="lastname">Lastname :</label>
-        <input type="text" name="lastname" id="lastname">
+    <form class="form-members" action="" method="get">
+        <label class="form-members__label" for="lastname">Lastname :</label>
+        <input class="form-members__input" type="text" name="lastname" id="lastname">
 
-        <label for="firstname">Firstname :</label>
-        <input type="text" name="firstname" id="firstname">
+        <label class="form-members__label" for="firstname">Firstname :</label>
+        <input class="form-members__input" type="text" name="firstname" id="firstname">
 
-
-        <button type="submit">Valider</button>
+        <button class="form-members__submit" type="submit">Valider</button>
     </form>
-    <ul>
+    <form class="form-reset" action="POST">
+    <input class="form-reset__submit" type="submit" value="Delete filters">
+</form>
+
+    <ul class="members-list">
         <?php foreach($members as $member): ?>
-            <li>
-                <a href="/member_details.php?id=<?php echo $member["userid"];?>&subscription=<?php echo $member["subscriptionName"];?>&subscriptionId=<?php echo $member["subscriptionId"];?>&firstname=<?php echo $member["firstname"];?>&lastname=<?php echo $member["lastname"];?>">
-                <div style="display: flex; gap: 20px;">
-                    <?= $member["lastname"]."-".$member["firstname"] ?>
-                    <span class="subscription"><?= $member["subscriptionName"] ? $member["subscriptionName"] : ""?></span>
-                </div>
+            <li class="members-list__item">
+                <a class="members-list__link" href="/member_details.php?id=<?php echo $member["userid"];?>">
+                    <div class="members-list__info">
+                        <?= $member["lastname"]."-".$member["firstname"] ?>
+                        <span class="members-list__subscription"><?= $member["subscriptionName"] ? $member["subscriptionName"] : ""?></span>
+                    </div>
+                </a>
             </li>
         <?php endforeach ?>
     </ul>
 </body>
 </html>
-
-
-
-

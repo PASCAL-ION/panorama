@@ -1,73 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 <body>
-    <?php
-        $subscription = $_GET["subscription"];
-        $subscriptionId = $_GET["subscriptionId"];
-        $firstname = $_GET["firstname"];
-        $lastname = $_GET["lastname"];
-        $id = $_GET["id"];
-    ?>
-
-    <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
-        <div style="display: flex; align-items: flex-start; gap: 15px;">
-            <img src="https://media.istockphoto.com/id/1214416600/photo/happy-rescued-sloth.jpg?s=612x612&w=0&k=20&c=Pa8lENkboBvXf6Kt7YvrxGyHlGHhQuQyYbP9ugRNer0=" alt="">
-            <div>
-                <h1><?php echo $lastname . " " . $firstname;?></h1>
-                <div style="display: flex;">
-                        <form action="?subscription=<?php echo htmlspecialchars($subscription); ?>&firstname=<?php echo htmlspecialchars($firstname); ?>&lastname=<?php echo htmlspecialchars($lastname); ?>&id=<?php echo htmlspecialchars($id); ?>&subscriptionId=<?php echo htmlspecialchars($subscriptionId); ?>" method="GET">
-                            <input type="hidden" name="subscription" value="<?php echo htmlspecialchars($subscription); ?>">
-                            <input type="hidden" name="subscriptionId" value="<?php echo htmlspecialchars($subscriptionId); ?>">
-                            <input type="hidden" name="firstname" value="<?php echo htmlspecialchars($firstname); ?>">
-                            <input type="hidden" name="lastname" value="<?php echo htmlspecialchars($lastname); ?>">
-                            <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
-
-                            <select name="subscription_select" id="">
-                                <option <?= (!$subscription ? 'selected="selected"': '')?>>No subscription</option>
-                                <option value="1" <?= ($subscriptionId == "1" ? 'selected="selected"': '')?>>VIP</option>
-                                <option value="2" <?= ($subscriptionId == "2" ? 'selected="selected"': '')?>>GOLD</option>
-                                <option value="3" <?= ($subscriptionId == "3" ? 'selected="selected"': '')?>>CLASSIC</option>
-                                <option value="4" <?= ($subscriptionId == "4" ? 'selected="selected"': '')?>>PASS DAY</option>
-                                <option value="DELETE">DELETE</option>
-                            </select>
-                            <input type="submit" value="Change">
-                        </form>
-                    </div>
+    <?php require_once "templates/header.php" ?>
+    <div class="member-details">
+        <div class="member-details__profile">
+            <img class="member-details__profile-image" alt="photo d'un paresseux" src="https://fac.img.pmdstatic.net/fit/~1~fac~2022~08~11~c3c7eb0b-7262-4ad3-9faf-8c11233f75ea.jpeg/1200x1200/quality/80/crop-from/center/4-infos-insolites-sur-le-paresseux.jpeg" alt="Profile Picture">
+            <div class="member-details__info">
+                <h1 class="member-details__name"><?php echo htmlspecialchars($userData[0]['lastname']) . " " . htmlspecialchars($userData[0]['firstname']); ?></h1>
+                <p class="member-details__subscription">Actual subscription : 
+                    <?php if($memberData['subscriptionId'] == 1): ?>
+                        VIP
+                    <?php elseif($memberData['subscriptionId'] == 2):?>
+                        GOLD
+                    <?php elseif($memberData['subscriptionId'] == 3):?>
+                        Classic
+                    <?php elseif($memberData['subscriptionId'] == 4):?>
+                        Day Pass
+                    <?php else:?>
+                        No Subscription
+                    <?php endif ?>
+                </p>
+                <form class="form-subscription" method="POST" action="">
+                    <label class="form-subscription__label" for="subscription_select">Change Subscription : </label>
+                    <select class="form-subscription__select" name="subscription_select" id="subscription_select">
+                        <option value="1" <?= ($memberData['subscriptionId'] == 1 ? 'selected' : '') ?>>VIP</option>
+                        <option value="2" <?= ($memberData['subscriptionId'] == 2 ? 'selected' : '') ?>>Gold</option>
+                        <option value="3" <?= ($memberData['subscriptionId'] == 3 ? 'selected' : '') ?>>Classic</option>
+                        <option value="4" <?= ($memberData['subscriptionId'] == 4 ? 'selected' : '') ?>>Day Pass</option>
+                        <option value="DELETE">Delete Subscription</option>
+                    </select>
+                    <button class="form-subscription__button" type="submit">Change</button>
+                </form>
             </div>
         </div>
-        <?php if(count($movieHistory) > 0): ?>
-            <div>
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-                    <div style="display: flex; align-items: center; gap: 15px;">
-                        <h2>History</h2>
-                        <form action="" method="get">
-                            <button type="submit">Add to history</button>
-                        </form>
-                    </div>
-                    <table>
+        <h2 class="member-details__history-title">History</h2>
+        <form class="form-history" action="" method="POST">
+            <label class="form-history__label" for="films">Choose movie to add :</label>
+            <input class="form-history__input" list="films_names" name="films" id="films">
+            <datalist id="films_names">
+                <?php foreach($allMoviesTitle as $title): ?>
+                    <option value="<?= $title["title"] ?>">
+                <?php endforeach ?>
+            </datalist>
+            <button class="form-history__button" type="submit">Add to history</button>
+        </form>
+        <?php if (!empty($movieHistory)): ?>
+            <div class="member-details__history-table">
+                <table>
+                    <thead>
                         <tr>
                             <th>Movie</th>
                             <th>Date</th>
                             <th>Room</th>
                         </tr>
-                        <?php foreach($movieHistory as $row): ?>
-                            <tr style="text-align: center;">
-                                <td><?= $row["movie_title"];?></td>
-                                <td><?= $row["date_begin"];?></td>
-                                <td><?= $row["room"];?></td>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($movieHistory as $movie): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($movie['movie_title']); ?></td>
+                                <td><?= htmlspecialchars($movie['date_begin']); ?></td>
+                                <td><?= htmlspecialchars($movie['room']); ?></td>
                             </tr>
-                        <?php endforeach ?>
-                    </table>
-                </div>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
-        <?php endif ?>
+        <?php else: ?>
+            <p class="member-details__no-history">No history to display</p>
+        <?php endif; ?>
     </div>
-    
 </body>
-</html>

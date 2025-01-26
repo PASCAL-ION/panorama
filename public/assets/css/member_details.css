@@ -1,0 +1,117 @@
+@import "reset.css";
+
+.member-details {
+    margin: 30px auto;
+    max-width: 1200px;
+}
+
+.member-details__profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.member-details__profile-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.member-details__info {
+    flex: 1;
+}
+
+.member-details__name {
+    font-size: 2em;
+    color: var(--primary-red);
+}
+
+.member-details__subscription {
+    margin-top: 10px;
+    color: var(--gray);
+}
+
+.form-subscription {
+    margin-top: 20px;
+}
+
+.form-subscription__label {
+    font-weight: bold;
+}
+
+.form-subscription__select {
+    margin-top: 5px;
+    padding: 10px;
+    background-color: var(--black-bg);
+    color: var(--white);
+    border-radius: 5px;
+    border: 1px solid var(--primary-red);
+    width: 100%;
+}
+
+.form-subscription__button {
+    margin-top: 10px;
+    background-color: var(--primary-red);
+    color: var(--white);
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 5px;
+}
+
+.form-subscription__button:hover {
+    background-color: var(--primary-gold);
+    color: var(--black-bg);
+}
+
+.member-details__history-title {
+    margin-top: 50px;
+    font-size: 1.5em;
+    color: var(--primary-red);
+}
+
+.form-history {
+    margin-top: 20px;
+}
+
+.form-history__label {
+    font-weight: bold;
+}
+
+.form-history__input {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--black-bg);
+    color: var(--white);
+    border-radius: 5px;
+    border: 1px solid var(--primary-red);
+    margin-top: 5px;
+}
+
+.form-history__button {
+    margin-top: 10px;
+    background-color: var(--primary-red);
+    color: var(--white);
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 5px;
+}
+
+.form-history__button:hover {
+    background-color: var(--primary-gold);
+    color: var(--black-bg);
+}
+
+.member-details__history-table {
+    margin-top: 20px;
+}
+
+.member-details__no-history {
+    color: var(--gray);
+    font-style: italic;
+}

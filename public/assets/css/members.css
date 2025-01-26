@@ -1,0 +1,108 @@
+@import "reset.css";
+
+.form-reset {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.form-reset__submit {
+    background-color: var(--primary-gold);
+    color: var(--white);
+    border: none;
+    padding: 12px 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 5px;
+}
+
+.form-reset__submit:hover {
+    background-color: var(--primary-red);
+    color: var(--black-bg);
+}
+
+
+.form-members {
+    background-color: var(--gray);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 700px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.form-members__label {
+    color: var(--white);
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.form-members__input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid var(--primary-gold);
+    margin-bottom: 15px;
+    background-color: var(--black-bg);
+    color: var(--white);
+}
+
+.form-members__input:focus {
+    outline: none;
+    border-color: var(--primary-red);
+}
+
+.form-members__submit {
+    background-color: var(--primary-gold);
+    color: var(--black-bg);
+    border: none;
+    padding: 12px 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.form-members__submit:hover {
+    background-color: var(--primary-red);
+    color: var(--white);
+}
+
+.members-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.members-list__item {
+    background-color: var(--gray);
+    border: 1px solid var(--primary-gold);
+    color: var(--white);
+    padding: 12px 18px;
+    margin: 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.members-list__item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+}
+
+.members-list__link {
+    color: var(--white);
+    text-decoration: none;
+}
+
+.members-list__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.members-list__subscription {
+    font-style: italic;
+    color: var(--primary-gold);
+}

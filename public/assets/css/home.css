@@ -1,0 +1,114 @@
+@import "reset.css";
+
+.header {
+    text-align: center;
+    color: var(--primary-gold);
+    margin-top: 30px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+}
+
+.form__title {
+    color: var(--primary-gold);
+    margin-bottom: 15px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.form {
+    background-color: var(--gray);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 700px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.form__label {
+    color: var(--white);
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.form__input,
+.form__select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid var(--primary-gold);
+    margin-bottom: 15px;
+    background-color: var(--black-bg);
+    color: var(--white);
+}
+
+.form__input:focus,
+.form__select:focus {
+    outline: none;
+    border-color: var(--primary-red);
+}
+
+.form__submit {
+    background-color: var(--primary-gold);
+    color: var(--black-bg);
+    border: none;
+    padding: 12px 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 5px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.form__submit:hover {
+    background-color: var(--primary-red);
+    color: var(--white);
+}
+
+.movie-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.movie-list__item {
+    background-color: var(--gray);
+    border: 1px solid var(--primary-gold);
+    color: var(--white);
+    padding: 12px 18px;
+    margin: 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie-list__item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+}
+
+.form--delete {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form--delete .form__submit {
+    background-color: var(--primary-red);
+    color: var(--white);
+    border: none;
+    padding: 12px 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: auto;
+}
+
+.form--delete .form__submit:hover {
+    background-color: var(--primary-gold);
+    color: var(--black-bg);
+}
+

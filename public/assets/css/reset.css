@@ -1,0 +1,173 @@
+:root {
+    --primary-red: #9b111e;
+    --primary-gold: #d4af37; 
+    --black-bg: #1c1c1c;
+    --white: #f5f5f5;
+    --gray: #3d3d3d; 
+}
+
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+
+#max_width{
+    max-width: 1350px;
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid red;
+  }
+  
+  *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      line-height: calc(1em + 0.5rem);
+      list-style: none;
+      text-decoration: none;
+      color: black;
+      border: none;
+    }
+    
+    body {
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      font-size: calc(15px + 0.390625vw);
+        background-color: var(--black-bg);
+        font-family: 'Georgia', serif;
+        color: var(--white);
+        margin: 0;
+        padding: 0;
+    }
+    
+    img, picture, video, canvas, svg {
+      display: block;
+      max-width: 100%;
+    }
+    
+    input, button, textarea, select {
+      font: inherit;
+    }
+    
+    p, h1, h2, h3, h4, h5, h6 {
+      overflow-wrap: break-word;
+    }
+    
+    p {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      /* text-align: center; */
+      overflow-wrap: break-word;
+    }
+
+
+
+
+
+
+
+/* Style pour la table */
+.responsive-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+thead th {
+    background-color: #f4f4f4;
+    padding: 10px;
+    text-align: left;
+    font-size: 1.2rem;
+}
+
+tbody td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.odd-td{
+    background: rgb(137, 137, 255);
+}
+
+.movie-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.session-dropdown {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    background: #f9f9f9;
+}
+
+.session-header {
+    font-weight: bold;
+    background: #ddd;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.session-list {
+    list-style: none;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.session-header, .session-item{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+}
+
+.session-list li {
+    border-bottom: 1px solid #eee;
+}
+
+.session-list li:last-child {
+    border-bottom: none;
+}
+
+@media screen and (max-width: 768px) {
+    .responsive-table thead {
+        display: none;
+    }
+
+    .responsive-table tr {
+        display: block;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .responsive-table td {
+        display: block;
+        text-align: right;
+        font-size: 1rem;
+        padding: 5px 10px;
+    }
+
+    .responsive-table td::before {
+        content: attr(data-label);
+        float: left;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: #666;
+    }
+
+    .movie-title {
+        font-size: 1.8rem;
+        text-align: left;
+    }
+
+    .session-dropdown {
+        margin-top: 10px;
+    }
+}
+/* fin de style pour la table */

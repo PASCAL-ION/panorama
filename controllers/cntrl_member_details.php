@@ -1,27 +1,46 @@
 <?php
 require_once "../models/member_details_model.php";
 
-function userHistory(){
-    $id = $_GET["id"];
-    
-    $movieHistory = getUserHistory($id);
-    
-    require_once "../views/view_member_details.php";
+
+function getMemberDetails($id) {
+    return fetchMemberDetails($id);
 }
 
-function changeSubscription(){
-    $userid = $_GET["id"];
-    if ($_GET["subscription_select"] && !empty($_GET["subscription_select"])) {
-        $selected_sub_id = $_GET["subscription_select"];
-        
-        if ($selected_sub_id == "DELETE") {
-            deleteSubscription($userid);
+function getUserDetails($id){
+    return fetchUserDetails($id);
+}
+
+function getUserHistory($id) {
+    return fetchUserHistory($id);
+}
+
+function changeSubscription($id, $selectedSubId) {
+    $member_exist = memberExist($id);
+    if ($member_exist && !empty($member_exist)) {
+        if ($selectedSubId != "DELETE") {
+            updateSubscription($id, $selectedSubId);
+            header("Refresh:0");
+        } elseif($selectedSubId == "DELETE") {
+            $member_id = getMemberIdFromUserId($id);
+            deleteSubscription($member_id["id"], $id);
+            header('Location: members.php');
+        }
+    } else {
+        if ($selectedSubId === "DELETE") {
+            echo "Can't delete, the user does not have a subscription";
         } else {
-            modifySubscription($userid, $selected_sub_id);
+            echo "add subscription cntrl" . "<br/>";
+            addSubscription($selectedSubId, $id);
+            header("Refresh:0");
         }
     }
+}
 
+function getMoviesTitle(){
+    return fetchAllMoviesTitle();
+}
 
-    require_once "../views/view_member_details.php";
+function addToHistory(){
+    return addFilmToHistory();
 }
 ?>
