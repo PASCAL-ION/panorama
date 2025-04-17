@@ -15,7 +15,7 @@
 <form class="sessions__form" action="POST">
     <input class="sessions__form-submit" type="submit" value="Delete filters">
 </form>
-
+<h2>Add session</h2>
 <form class="sessions__add-form" action="" method="post">
     <?php if (isset($error_message)): ?>
         <div class="sessions__error-message"><?= htmlspecialchars($error_message); ?></div>
